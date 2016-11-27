@@ -9,6 +9,6 @@ namespace Darrigo\FeaturedBanners\Config;
 class WidgetSettings
 {
     const ID = 'featured-banners';
-    const TITLE = 'Banner in evidenza';
-    const DESCRIPTION = 'Aggiungi i banner in evidenza';
+    const TITLE = 'Banner';
+    const DESCRIPTION = 'Aggiungi un banner';
 }

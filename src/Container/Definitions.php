@@ -2,6 +2,8 @@
 namespace Darrigo\FeaturedBanners\Container;
 
 use Darrigo\FeaturedBanners\Config\WidgetSettings;
+use Darrigo\FeaturedBanners\Util\Sanitizer;
+use Darrigo\FeaturedBanners\Validator\InstanceValidator;
 
 /**
  * Class Definitions
@@ -29,7 +31,12 @@ final class Definitions
     private static function services()
     {
         return [
-
+            Sanitizer::class => function() {
+                return new Sanitizer();
+            },
+            InstanceValidator::class => function(Sanitizer $sanitizer) {
+                return new InstanceValidator($sanitizer);
+            }
         ];
     }
 

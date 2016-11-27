@@ -1,9 +1,14 @@
 <?php
 namespace Darrigo\FeaturedBanners;
 
-use DI\ContainerBuilder;
-use Darrigo\FeaturedBanners\Container\Definitions;
+use Darrigo\FeaturedBanners\Model\Banner;
+use Darrigo\FeaturedBanners\Model\Field;
+use Darrigo\WpPluginUtils\Model\Collection;
+use DI\ContainerBuilder;;
 use Darrigo\WpPluginUtils\View\View;
+use Darrigo\WpPluginUtils\Model\Instance;
+use Darrigo\FeaturedBanners\Container\Definitions;
+use Darrigo\FeaturedBanners\Validator\InstanceValidator;
 
 class WidgetManager extends \WP_Widget
 {
@@ -13,11 +18,17 @@ class WidgetManager extends \WP_Widget
     private $container;
 
     /**
+     * @var InstanceValidator
+     */
+    private $instanceValidator;
+
+    /**
      * WidgetManager constructor.
      */
     public function __construct()
     {
         $this->container = (new ContainerBuilder())->addDefinitions(Definitions::get())->build();
+        $this->instanceValidator = $this->container->get(InstanceValidator::class);
 
         parent::__construct(
             $this->container->get('widget.id'),
@@ -31,28 +42,48 @@ class WidgetManager extends \WP_Widget
 
     }
 
+    /**
+     * @param $instance
+     * @throws \DI\NotFoundException
+     */
     public function form($instance)
     {
-        (new View($this->container->get('view.form'), [
-            'fields' => [
-                'banner_uri' => [
-                    'id' => $this->get_field_id('banner_uri'),
-                    'name' => $this->get_field_name('banner_uri'),
-                ],
-                'banner_image' => [
-                    'id' => $this->get_field_id('banner_image'),
-                    'name' => $this->get_field_name('banner_image'),
-                ]
-            ],
-            'instance' => $instance
-        ]))->render();
+        (new View($this->container->get('view.form'), new Collection([
+            'fields' => new Collection([
+                'banner_uri' => new Field($this->getFieldId('banner_uri'), $this->getFieldName('banner_uri')),
+                'banner_image' => new Field($this->getFieldId('banner_image'), $this->getFieldName('banner_image')),
+            ]),
+            'banner' => Banner::fromInstance(new Instance($instance))
+        ])))->render();
     }
 
+    /**
+     * @param $newInstance
+     * @param $oldInstance
+     * @return Instance
+     */
     public function update($newInstance, $oldInstance)
     {
-        $instance = [];
-        $instance['banner_uri'] = isset($newInstance['banner_uri']) ? strip_tags($newInstance['banner_uri']) : '';
-        $instance['banner_image'] = isset($newInstance['banner_image']) ? strip_tags($newInstance['banner_image']) : '';
-        return $instance;
+        return $this->instanceValidator->validate(new Instance($newInstance))->__toArray();
+    }
+
+    /**
+     * Wrap infamous WordPress snake case syntax.
+     * @param $id
+     * @return mixed
+     */
+    private function getFieldId($id)
+    {
+        return $this->get_field_id($id);
+    }
+
+    /**
+     * Wrap infamous WordPress snake case syntax.
+     * @param $name
+     * @return mixed
+     */
+    private function getFieldName($name)
+    {
+        return $this->get_field_name($name);
     }
 }

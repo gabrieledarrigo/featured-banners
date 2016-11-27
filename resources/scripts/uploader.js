@@ -1,5 +1,6 @@
 jQuery(document).ready(function($) {
     $(document).on('click', '[data-featured-banners-upload]', function(e) {
+
         var $el = $(e.target);
         var $target = $($el.data('target'));
         var $placeholder = $el.parent().find('.image-placeholder .image-picture');

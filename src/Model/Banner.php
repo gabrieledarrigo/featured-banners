@@ -1,11 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: gabriele
- * Date: 26/11/2016
- * Time: 18:44
- */
-
 namespace Darrigo\FeaturedBanners\Model;
 
 use Darrigo\WpPluginUtils\Model\Instance;

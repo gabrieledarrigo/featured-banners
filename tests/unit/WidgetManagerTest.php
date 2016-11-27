@@ -1,6 +1,8 @@
 <?php
 namespace Tests\Darrigo\FeaturedBanners;
 
+use Darrigo\FeaturedBanners\WidgetManager;
+use Darrigo\WpPluginUtils\Model\Instance;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -10,22 +12,11 @@ use PHPUnit\Framework\TestCase;
  */
 class WidgetManagerTest extends TestCase
 {
-
-    public function testEq()
+    public function testItShouldReturnAnInstance()
     {
-        $this->assertEquals(1, 1);
-    }
+        $manager = new WidgetManager();
+        $instance = $manager->update(['a' => 1], []);
 
-//    public function testItShouldReturnAnInstanceWithProductIdAndProductPrice()
-//    {
-//        $manager = new WidgetManager();
-//        $instance = $manager->update([], []);
-//
-//        $this->assertArrayHasKey(Instance::PRODUCT_ID, $instance);
-//        $this->assertEquals('', $instance[Instance::PRODUCT_ID]);
-//
-//        $instance = $manager->update([Instance::PRODUCT_ID => 122], []);
-//        $this->assertArrayHasKey(Instance::PRODUCT_ID, $instance);
-//        $this->assertEquals(122, $instance[Instance::PRODUCT_ID]);
-//    }
+        $this->assertArrayHasKey('a', $instance);
+    }
 }

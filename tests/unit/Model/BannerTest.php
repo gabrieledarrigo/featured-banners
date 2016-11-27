@@ -1,11 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: gabriele
- * Date: 26/11/2016
- * Time: 18:49
- */
-
 namespace Tests\Darrigo\FeaturedBanners;
 
 use Darrigo\FeaturedBanners\Model\Banner;
@@ -26,9 +19,8 @@ class BannerTest extends TestCase
         $this->assertEquals($this->image, $banner->getImage());
     }
 
-    public function testItCanReturnAnArrayRappresentation()
+    public function testItCanReturnAnArrayRepresentation()
     {
-       
         $banner = new Banner($this->uri, $this->image);
 
         $this->assertEquals([
