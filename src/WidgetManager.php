@@ -1,12 +1,12 @@
 <?php
 namespace Darrigo\FeaturedBanners;
 
-use Darrigo\FeaturedBanners\Model\Banner;
-use Darrigo\FeaturedBanners\Model\Field;
 use Darrigo\WpPluginUtils\Model\Collection;
-use DI\ContainerBuilder;;
+use DI\ContainerBuilder;
 use Darrigo\WpPluginUtils\View\View;
 use Darrigo\WpPluginUtils\Model\Instance;
+use Darrigo\WpPluginUtils\Model\Field;
+use Darrigo\FeaturedBanners\Model\Banner;
 use Darrigo\FeaturedBanners\Container\Definitions;
 use Darrigo\FeaturedBanners\Validator\InstanceValidator;
 
@@ -42,6 +42,11 @@ class WidgetManager extends \WP_Widget
         );
     }
 
+    /**
+     * @param $args
+     * @param $instance
+     * @throws \DI\NotFoundException
+     */
     public function widget($args, $instance)
     {
         (new View($this->container->get('view.banner'), new Collection([
