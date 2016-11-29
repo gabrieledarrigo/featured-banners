@@ -4,6 +4,7 @@ namespace Darrigo\FeaturedBanners\Util;
 /**
  * Class Sanitize
  * @package Darrigo\FeaturedBanners\Util
+ * @author Gabriele D'Arrigo - darrigo.g@gmail.com
  */
 class Sanitizer
 {

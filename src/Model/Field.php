@@ -6,6 +6,7 @@ use Darrigo\WpPluginUtils\Model\ViewModel;
 /**
  * Class Field
  * @package Darrigo\FeaturedBanners\Model
+ * @author Gabriele D'Arrigo - darrigo.g@gmail.com
  */
 final class Field extends ViewModel
 {

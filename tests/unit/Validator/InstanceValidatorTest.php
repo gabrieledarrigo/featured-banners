@@ -6,6 +6,11 @@ use Darrigo\WpPluginUtils\Model\Instance;
 use Darrigo\FeaturedBanners\Validator\InstanceValidator;
 use Darrigo\FeaturedBanners\Util\Sanitizer;
 
+/**
+ * Class InstanceValidatorTest
+ * @package Tests\Darrigo\WeeklyOffers\Service
+ * @author Gabriele D'Arrigo - darrigo.g@gmail.com
+ */
 class InstanceValidatorTest extends TestCase
 {
     /**

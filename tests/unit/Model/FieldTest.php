@@ -4,6 +4,11 @@ namespace Tests\Darrigo\FeaturedBanners;
 use Darrigo\FeaturedBanners\Model\Field;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * Class FieldTest
+ * @package Tests\Darrigo\FeaturedBanners
+ * @author Gabriele D'Arrigo - darrigo.g@gmail.com
+ */
 class FieldTest extends TestCase
 {
     public function testItRepresentAFieldWithIdAndName()

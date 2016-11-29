@@ -5,6 +5,11 @@ use Darrigo\FeaturedBanners\Model\Banner;
 use Darrigo\WpPluginUtils\Model\Instance;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * Class BannerTest
+ * @package Tests\Darrigo\FeaturedBanners
+ * @author Gabriele D'Arrigo - darrigo.g@gmail.com
+ */
 class BannerTest extends TestCase
 {
     protected $uri = "http://www.google.com";

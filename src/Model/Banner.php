@@ -4,6 +4,11 @@ namespace Darrigo\FeaturedBanners\Model;
 use Darrigo\WpPluginUtils\Model\Instance;
 use Darrigo\WpPluginUtils\Model\ViewModel;
 
+/**
+ * Class Banner
+ * @package Darrigo\FeaturedBanners\Model
+ * @author Gabriele D'Arrigo - darrigo.g@gmail.com
+ */
 final class Banner extends ViewModel
 {
     const BANNER_URI = 'banner_uri';

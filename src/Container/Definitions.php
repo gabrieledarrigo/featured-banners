@@ -21,6 +21,7 @@ final class Definitions
             'widget.id' => WidgetSettings::ID,
             'widget.title' => WidgetSettings::TITLE,
             'widget.description' => WidgetSettings::DESCRIPTION,
+            'view.banner' => realpath(dirname(dirname(__DIR__))) . '/resources/templates/_banner.php',
             'view.form' => realpath(dirname(dirname(__DIR__))) . '/resources/templates/_form.php',
         ];
     }

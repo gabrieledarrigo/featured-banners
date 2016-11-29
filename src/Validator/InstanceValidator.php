@@ -9,6 +9,7 @@ use Darrigo\WpPluginUtils\Utils\IsEmpty;
 /**
  * Class InstanceValidator
  * @package Darrigo\FeaturedBanners\Validator
+ * @author Gabriele D'Arrigo - darrigo.g@gmail.com
  */
 class InstanceValidator
 {

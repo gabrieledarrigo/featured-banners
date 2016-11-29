@@ -4,6 +4,11 @@ namespace Tests\Darrigo\FeaturedBanners;
 use PHPUnit\Framework\TestCase;
 use Darrigo\FeaturedBanners\Util\Sanitizer;
 
+/**
+ * Class SanitizerTest
+ * @package Tests\Darrigo\FeaturedBanners
+ * @author Gabriele D'Arrigo - darrigo.g@gmail.com
+ */
 class SanitizerTest extends TestCase
 {
     /**

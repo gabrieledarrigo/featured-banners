@@ -10,6 +10,11 @@ use Darrigo\WpPluginUtils\Model\Instance;
 use Darrigo\FeaturedBanners\Container\Definitions;
 use Darrigo\FeaturedBanners\Validator\InstanceValidator;
 
+/**
+ * Class WidgetManager
+ * @package Darrigo\FeaturedBanners
+ * @author Gabriele D'Arrigo - darrigo.g@gmail.com
+ */
 class WidgetManager extends \WP_Widget
 {
     /**
@@ -39,7 +44,9 @@ class WidgetManager extends \WP_Widget
 
     public function widget($args, $instance)
     {
-
+        (new View($this->container->get('view.banner'), new Collection([
+            'banner' => Banner::fromInstance(new Instance($instance))
+        ])))->render();
     }
 
     /**
